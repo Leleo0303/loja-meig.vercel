@@ -126,15 +126,45 @@ const App: React.FC = () => {
             </div>
           </div>
 
+          {/* BACKGROUND COM DETALHES FLUTUANTES ESTÉTICOS */}
+          <div className="absolute left-6 top-[120vh] text-[#FF7EB6]/20 text-5xl select-none animate-bounce hidden md:block" style={{ animationDuration: '4s' }}>
+            DOCE ୨୧
+          </div>
+          <div className="absolute right-12 top-[180vh] text-[#F7D7E1]/60 text-4xl select-none animate-pulse hidden md:block">
+            ✦
+          </div>
+          <div className="absolute left-10 top-[260vh] text-[#FF7EB6]/20 text-4xl select-none animate-pulse hidden md:block">
+            ✦
+          </div>
+          <div className="absolute right-8 top-[320vh] text-[#F7D7E1] text-5xl select-none animate-bounce hidden md:block" style={{ animationDuration: '5s' }}>
+            ୨୧
+          </div>
+
+          {/* CONTEÚDO PRINCIPAL COM ANIMAÇÕES PREMIUM ATUALIZADAS */}
           <main className="relative z-20 bg-[#FFF8FB] overflow-hidden">
-            <div data-aos="fade-up">
+            <div data-aos="zoom-in" data-aos-duration="1200">
               <Hero onOpenExplorar={() => setCurrentScreen('explorar')} />
             </div>
-            <div data-aos="fade-right"><Manifesto /></div>
-            <div data-aos="fade-up"><Collections /></div>
-            <div data-aos="fade-up"><LookShowcase /></div>
-            <div data-aos="fade-left"><Inspiration /></div>
-            <div data-aos="fade-up"><Products /></div>
+            
+            <div data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">
+              <Manifesto />
+            </div>
+            
+            <div data-aos="fade-up" data-aos-easing="ease-out-back">
+              <Collections />
+            </div>
+            
+            <div data-aos="fade-up" data-aos-delay="100">
+              <LookShowcase />
+            </div>
+            
+            <div data-aos="fade-left" data-aos-duration="1100">
+              <Inspiration />
+            </div>
+            
+            <div data-aos="fade-up" data-aos-delay="200">
+              <Products />
+            </div>
           </main>
           
           <Footer />
