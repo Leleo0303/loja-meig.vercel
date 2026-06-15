@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; //  Importado corretamente aqui!
 
 interface CheckoutProps {
   onBackToMain: () => void;
@@ -6,6 +6,7 @@ interface CheckoutProps {
 }
 
 export const Checkout: React.FC<CheckoutProps> = ({ onBackToMain, onConfirmOrder }) => {
+  // O estado agora está ativo e será limpo pelo compilador porque é usado abaixo no clique das abas
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'pix'>('card');
 
   return (
@@ -72,7 +73,6 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBackToMain, onConfirmOrder
                 <h2 className="font-serif text-lg md:text-xl text-[#1c1b1b]">Forma de Pagamento</h2>
               </div>
               
-              {/* Opções de pagamento lado a lado mesmo no menor celular */}
               <div className="grid grid-cols-2 gap-3">
                 <div 
                   className={`cursor-pointer border-2 rounded-xl p-3 transition-all ${paymentMethod === 'card' ? 'border-[#b7046c] bg-[#ff4fa3]/5' : 'border-[#dfbec8]'}`}
