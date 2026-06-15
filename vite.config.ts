@@ -1,8 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-// https://vitejs.dev/config/
+// Configuração oficial do Tailwind v4 para o Vite
 export default defineConfig({
-  plugins: [react()],
-  base: '/loja-meig.vercel/', // ⚠️ COLOQUE O NOME EXATO DO SEU REPOSITÓRIO AQUI (ex: '/loja-meig/')
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
 })
