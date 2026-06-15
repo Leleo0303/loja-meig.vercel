@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; //  Pronto!
+import React, {  useState} from 'react'; //  Pronto!
 
 // Renomeei os vídeos de forma simples para você colocar o mesmo nome nos seus arquivos no VSCode
 const videoLooks = [
