@@ -1,6 +1,11 @@
 import React from 'react';
 
-export const Hero: React.FC = () => {
+// Definição da propriedade que o componente vai receber
+interface HeroProps {
+  onOpenExplorar: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onOpenExplorar }) => {
   return (
     <section className="relative h-screen flex items-center justify-center bg-[#FFF8FB] overflow-hidden pt-16">
       {/* Background Soft Glow */}
@@ -19,11 +24,16 @@ export const Hero: React.FC = () => {
           Peças escolhidas meticulosamente para valorizar seu estilo com leveza, elegância e a personalidade única que você possui.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="w-full sm:w-auto bg-[#2C2C2C] text-white text-xs uppercase tracking-widest font-medium px-8 py-4 rounded-full hover:bg-[#2C2C2C]/90 transition-all duration-300 shadow-lg">
+          
+          {/* Botão de Explorar Coleção com a ação de mudar de tela */}
+          <button 
+            onClick={onOpenExplorar}
+            className="w-full sm:w-auto bg-[#2C2C2C] text-white text-xs uppercase tracking-widest font-medium px-8 py-4 rounded-full hover:bg-[#2C2C2C]/90 transition-all duration-300 shadow-lg cursor-pointer"
+          >
             Explorar Coleção
           </button>
           
-          {/* Botão do Instagram Corrigido */}
+          {/* Botão do Instagram */}
           <a 
             href="https://www.instagram.com/meig.outfit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"

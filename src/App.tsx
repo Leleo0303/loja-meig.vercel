@@ -15,10 +15,11 @@ import { LookShowcase } from './assets/components/LookShowcase';
 import { Checkout } from './assets/components/Checkout';
 import { Cart } from './assets/components/Cart';
 import { OrderConfirmed } from './assets/components/OrderConfirmed';
+import { ExplorarColecao } from './assets/components/ExplorarColecao';
 
 const App: React.FC = () => {
-  // Estados de telas atualizados para suportar o fluxo completo
-  const [currentScreen, setCurrentScreen] = useState<'loader' | 'login' | 'main' | 'cart' | 'checkout' | 'confirmed'>('loader');
+  // Estados de telas atualizados incluindo a nova tela 'explorar'
+  const [currentScreen, setCurrentScreen] = useState<'loader' | 'login' | 'main' | 'cart' | 'checkout' | 'confirmed' | 'explorar'>('loader');
   const [progress, setProgress] = useState(0);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -108,8 +109,10 @@ const App: React.FC = () => {
       {/* 3. LOJA PRINCIPAL */}
       {currentScreen === 'main' && (
         <div className="relative min-h-screen">
-          {/* Ao clicar no botão ou bolsa do navbar, abre a Sacola */}
-          <Navbar onOpenCart={() => setCurrentScreen('cart')} />
+          <Navbar 
+            onOpenCart={() => setCurrentScreen('cart')} 
+            onOpenExplorar={() => setCurrentScreen('explorar')}
+          />
           
           <div className="relative w-full h-[90vh] bg-black overflow-hidden flex items-center justify-center">
             <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover opacity-50">
@@ -124,7 +127,9 @@ const App: React.FC = () => {
           </div>
 
           <main className="relative z-20 bg-[#FFF8FB] overflow-hidden">
-            <div data-aos="fade-up"><Hero /></div>
+            <div data-aos="fade-up">
+              <Hero onOpenExplorar={() => setCurrentScreen('explorar')} />
+            </div>
             <div data-aos="fade-right"><Manifesto /></div>
             <div data-aos="fade-up"><Collections /></div>
             <div data-aos="fade-up"><LookShowcase /></div>
@@ -136,7 +141,29 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {/* 4. TELA DA SACOLA DE COMPRAS (CARRINHO) */}
+      {/* 4. TELA DE EXPLORAR COLEÇÃO E LOOKS */}
+      {currentScreen === 'explorar' && (
+        <div className="relative min-h-screen">
+          <Navbar 
+            onOpenCart={() => setCurrentScreen('cart')} 
+            onOpenExplorar={() => setCurrentScreen('explorar')}
+          />
+          
+          <ExplorarColecao />
+          
+          {/* Botão Flutuante Elegante para Voltar ao Início */}
+          <button 
+            onClick={() => setCurrentScreen('main')}
+            className="fixed bottom-6 right-6 bg-[#2C2C2C] text-white text-xs uppercase tracking-widest font-medium px-6 py-3 rounded-full shadow-xl z-50 hover:bg-[#404040] transition-all transform hover:scale-105"
+          >
+            ← Voltar para Início
+          </button>
+          
+          <Footer />
+        </div>
+      )}
+
+      {/* 5. TELA DA SACOLA DE COMPRAS (CARRINHO) */}
       {currentScreen === 'cart' && (
         <Cart 
           onBackToMain={() => setCurrentScreen('main')} 
@@ -144,7 +171,7 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* 5. TELA DE CHECKOUT */}
+      {/* 6. TELA DE CHECKOUT */}
       {currentScreen === 'checkout' && (
         <Checkout 
           onBackToMain={() => setCurrentScreen('cart')} 
@@ -152,7 +179,7 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* 6. TELA DE PEDIDO CONFIRMADO 🎉 */}
+      {/* 7. TELA DE PEDIDO CONFIRMADO 🎉 */}
       {currentScreen === 'confirmed' && (
         <OrderConfirmed 
           onBackToShop={() => setCurrentScreen('main')} 
