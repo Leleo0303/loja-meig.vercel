@@ -22,9 +22,16 @@ export const Hero: React.FC = () => {
           <button className="w-full sm:w-auto bg-[#2C2C2C] text-white text-xs uppercase tracking-widest font-medium px-8 py-4 rounded-full hover:bg-[#2C2C2C]/90 transition-all duration-300 shadow-lg">
             Explorar Coleção
           </button>
-          <button className="w-full sm:w-auto border border-[#2C2C2C]/20 text-[#2C2C2C] text-xs uppercase tracking-widest font-medium px-8 py-4 rounded-full hover:bg-[#F7D7E1]/30 transition-all duration-300">
+          
+          {/* Botão do Instagram Corrigido */}
+          <a 
+            href="https://www.instagram.com/meig.outfit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto border border-[#2C2C2C]/20 text-[#2C2C2C] text-xs uppercase tracking-widest font-medium px-8 py-4 rounded-full hover:bg-[#F7D7E1]/30 transition-all duration-300 text-center block"
+          >
             Instagram
-          </button>
+          </a>
         </div>
       </div>
     </section>
